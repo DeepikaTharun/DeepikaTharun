@@ -41,6 +41,12 @@ test("Title", function(){
 
 test("Title1", ()=>{
 
+    // Launch the url
+    // fill the username
+    // fill the password
+    // click on login button
+    // validate if the login is succ..
+
 })
 
 // async- await
@@ -50,3 +56,10 @@ test("Title1", ()=>{
 
 
 // JS & TS are asynchronous in nature
+
+
+// Locators 
+
+// 1. css selector - 2
+// 2. xpath - 3
+// 3. Playwright getBy locators - 1
