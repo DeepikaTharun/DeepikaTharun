@@ -67,4 +67,66 @@ test("Login into application using valid credentials", async function({page}){
     // toBeVisible() - Check if the element is visible on the page or not
     await expect(page.getByText("Log out", {exact:true})).toBeVisible()
 
-})*/
+})
+
+// select radio/checkbox
+test("Handling radio button and checbox", async ({page})=>{
+
+    await page.goto("https://testautomationpractice.blogspot.com/")
+    // click() - Click on an element
+    // check() - It validates if the element is already checked/selected, if it
+    // is not selected then it click on the element. Only work for checkobox or radio
+
+    // uncheck() - It validates if the element is not already checked/selected, if it
+    // is selected then it click on the element.
+
+    await page.getByRole('radio', {name:'Female'}).check()
+    // toBeChecked() - Which validates if the element is checked or not
+    await expect(page.getByRole('radio', {name:'Female'})).toBeChecked()
+    
+    await page.getByRole('checkbox', {name:'Thursday'}).check()
+
+    await expect(page.getByRole('checkbox', {name:'Thursday'})).toBeChecked()
+
+    await page.getByRole('checkbox', {name:'Thursday'}).uncheck()
+
+    await expect(page.getByRole('checkbox', {name:'Thursday'})).not.toBeChecked()
+ 
+    const checkbox =  page.getByRole('checkbox')
+    //count() - Which will return the total number of matching element
+    const count = await checkbox.count()
+
+    for(let i=0; i<count; i++){
+        checkbox.nth(i).click()
+        await page.waitForTimeout(1000)
+    }
+
+})
+
+
+// get the text value of an element/multiple elements
+
+test.only("Get the text from an element", async ({page})=>{
+    await page.goto("https://testautomationpractice.blogspot.com/")
+    // textContent() - return the text value from the matching element even if the element is not visible on the page
+    // innerText() - return the text value fron visible element on the page
+
+    const text = await page.locator("h1.title").innerText()
+    console.log(text);
+
+    // Get the text value from multiple elements
+
+    // all TextContents()
+    // allInnerTexts()
+
+    const allTexts = await page.locator("h2.title").allTextContents()
+    console.log(allTexts)
+
+})
+
+// Drop-down element
+
+
+
+
+*/
