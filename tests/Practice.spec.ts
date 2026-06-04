@@ -13,4 +13,3 @@ test("Login page into the automation demo application", async({page}) => {
     await page.locator(':text-is("Email")')
 
     })
-    <input required="" id="gender-radio-1" class="form-check-input" type="radio" value="Male" name="gender">

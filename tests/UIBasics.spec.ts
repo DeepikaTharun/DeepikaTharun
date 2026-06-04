@@ -124,6 +124,9 @@ test.only("Get the text from an element", async ({page})=>{
 
 })
 
+
+// Drop-down element
+
 // Drop-down element
 
 
