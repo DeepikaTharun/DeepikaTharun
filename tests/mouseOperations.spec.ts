@@ -46,7 +46,7 @@ test("Handling scrolling on the page", async ({page})=>{
     // Note: Playwright by default perform scrolling on the page
 })
 
-test.only("Handling drag and drop", async ({page})=>{
+test("Handling drag and drop", async ({page})=>{
     await page.goto("https://testautomationpractice.blogspot.com/")
 
     const sourceElement = await page.locator("#draggable")
