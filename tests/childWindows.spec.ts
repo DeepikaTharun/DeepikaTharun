@@ -16,7 +16,7 @@
 import {test, expect} from '@playwright/test'
 
 
-test.only("Handling multiple windows", async ({page})=>{
+test("Handling multiple windows", async ({page})=>{
     await page.goto("https://demo.automationtesting.in/Windows.html")
 
     const page1 = page.waitForEvent("popup")
