@@ -106,7 +106,7 @@ test("Handling radio button and checbox", async ({page})=>{
 
 // get the text value of an element/multiple elements
 
-test.only("Get the text from an element", async ({page})=>{
+test("Get the text from an element", async ({page})=>{
     await page.goto("https://testautomationpractice.blogspot.com/")
     // textContent() - return the text value from the matching element even if the element is not visible on the page
     // innerText() - return the text value fron visible element on the page

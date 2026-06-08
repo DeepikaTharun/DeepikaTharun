@@ -59,7 +59,7 @@ await page.getByText("Add-ons" , {exact:true}).hover()
 await expect(page.getByTestId("test-id-SpiceMax")).toHaveText("SpiceMax")
 
 })
-test.only("Handling scrolling down the page",async ({page}) => {
+test("Handling scrolling down the page",async ({page}) => {
 await page.goto("https://testautomationpractice.blogspot.com/")
 await page.getByText("Download Files",{exact:true}).click()
 await page.locator("#inputText").fill("testing")
