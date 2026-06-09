@@ -28,7 +28,7 @@ test("Handling right click and double click", async ({page})=>{
 })
 
 test("Handling mouse over on an element", async ({page})=>{
-    await page.goto("https://www.spicejet.com/")
+    await page.goto("https://www.spicejet.com/", { waitUntil: "domcontentloaded", timeout: 60_000 })
 
     await page.getByText("Travel Policies").hover()
     await expect(page.getByTestId("test-id-Baggage Information")).toHaveText("Baggage Information")

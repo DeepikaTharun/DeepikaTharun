@@ -17,19 +17,15 @@ import {test, expect} from '@playwright/test'
 
 
 test("Handling multiple windows", async ({page})=>{
-    await page.goto("https://demo.automationtesting.in/Windows.html")
+    await page.goto("https://demo.automationtesting.in/Windows.html", {
+        waitUntil: "domcontentloaded",
+        timeout: 60_000,
+    })
 
     const page1 = page.waitForEvent("popup")
-    // console.log(page1);
-    
 
-    // Click on the element which is responsible for generation of "popup" event on the page
     await page.locator("#Tabbed button").click()
     const newPage = await page1
-    // console.log(newPage);
 
     await newPage.getByText("Downloads", {exact:true}).click()
-    
-
-
 })

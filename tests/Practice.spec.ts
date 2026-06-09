@@ -54,7 +54,7 @@ await page.waitForTimeout(3000)
 })
 
 test("Handling the mouse over options",async({page})=>{
-await page.goto("https://www.spicejet.com/")
+await page.goto("https://www.spicejet.com/", { waitUntil: "domcontentloaded", timeout: 60_000 })
 await page.getByText("Add-ons" , {exact:true}).hover()
 await expect(page.getByTestId("test-id-SpiceMax")).toHaveText("SpiceMax")
 
