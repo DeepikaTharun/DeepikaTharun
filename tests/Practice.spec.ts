@@ -66,3 +66,31 @@ await page.locator("#inputText").fill("testing")
 await page.locator("#inputText").fill("scroll up")
 await expect(page.locator("#inputText")).toHaveValue("scroll up")
 })
+
+test.only("Handling the Frames" , async function({page}){
+await page.goto("https://demo.automationtesting.in/Frames.html")
+ // frameLocator() - Which helps us in entering inside the iframe to select the elements
+    const framePage =  await page.frameLocator("#Single iframe")
+    await framePage.locator("div.col-xs-6 input").first().fill("testing")
+    await expect(framePage.locator("div.col-xs-6 input").first()).toHaveValue("testing")
+
+    await page.getByText("Iframe with in an Iframe", {exact:true}).click()
+
+    //Identifiying the outer and inner nested frames
+    const outerFrame = page.frameLocator("#Multiple iframe")
+    const innerFrame = outerFrame.frameLocator(".iframe-container iframe")
+
+    await innerFrame.locator("input[type='text']").first().fill("Nested frame")
+    await expect(innerFrame.locator("input[type='text']").first()).toHaveValue("Nested frame")
+
+    await page.getByText("Home", {exact:true}).click()
+    await expect(page.getByPlaceholder("Email id for Sign Up")).toBeVisible()
+
+    //Go back to the previous page
+    await page.goBack()
+    await page.getByText("Iframe with in an Iframe", {exact:true}).click()
+
+    await innerFrame.locator("input[type='text']").first().fill("Inner frame")
+    await expect(innerFrame.locator("input[type='text']").first()).toHaveValue("Inner frame")
+
+})
